@@ -8,43 +8,49 @@
 [![pdf-lib](https://img.shields.io/badge/pdf--lib-1.17-4f46e5?style=flat-square)](https://pdf-lib.js.org/)
 [![pdf.js](https://img.shields.io/badge/pdf.js-3.11-c84b2f?style=flat-square)](https://mozilla.github.io/pdf.js/)
 
-Aplikasi web statis untuk mencetak PDF — satu file (solo) atau banyak file sekaligus (bulk). Semua proses berjalan di browser, tidak ada file yang diunggah ke server.
+A static web app for printing PDFs — one file at a time or many in bulk. Everything runs in the browser; no file is ever uploaded to a server.
 
-**Demo live:** https://j0yfullness.github.io/pdf-printer/
+**Live demo:** https://j0yfullness.github.io/pdf-printer/
 
-## Fitur
+## Features
 
-- Tambah banyak PDF via drag & drop atau pemilih file.
-- Mode cetak:
-  - **Merge** — semua PDF digabung jadi satu dokumen, lalu satu dialog cetak.
-  - **Per-file** — tiap PDF dicetak terpisah, berurutan lewat antrean dengan progres.
-  - **Keduanya** — pilih metode saat menekan tombol Cetak.
-- Pengaturan cetak: ukuran halaman (A4/Letter/Legal/F4/ikuti konten), orientasi (otomatis/portrait/landscape), skala 25–200%, margin (mm), perkecil otomatis agar tidak terpotong.
-- Rentang halaman per file (mis. `1-3,5`).
-- Ubah urutan file (drag atau tombol ▲▼), hapus file.
-- Pratinjau hasil per halaman (render malas), zoom, tema terang/gelap.
-- Unduh hasil sebagai PDF, atau cetak langsung.
+- Add multiple PDFs via drag & drop or the file picker.
+- Print modes:
+  - **Merge** — all PDFs are combined into a single document, then one print dialog.
+  - **Per-file** — each PDF is printed separately, queued with a progress indicator.
+  - **Both** — choose the method when you hit Print.
+- Print settings: page size (A4/Letter/Legal/F4/fit to content), orientation (auto/portrait/landscape), scale 25–200%, margin (mm), and automatic shrinking so nothing gets clipped.
+- Per-file page ranges (e.g. `1-3,5`).
+- Reorder files (drag or ▲▼ buttons), remove files.
+- Per-page preview of the result (lazy rendered), zoom, light/dark theme.
+- Download the result as a PDF, or print it directly.
 
-## Menjalankan
+## Running
 
-**Cara termudah:** buka [demo live](https://j0yfullness.github.io/pdf-printer/) — tidak perlu instal apa pun.
+**Easiest:** open the [live demo](https://j0yfullness.github.io/pdf-printer/) — no install required.
 
-**Lokal:** butuh server statis (bukan `file://`) karena pdf.js memakai Web Worker dari CDN.
+**Locally:** a static server is required (not `file://`) because pdf.js uses a Web Worker from a CDN.
 
 ```powershell
 python -m http.server 8777
-# lalu buka http://127.0.0.1:8777/
+# then open http://127.0.0.1:8777/
 ```
 
-## Teknologi
+On Windows you can also just double-click `start.bat` — it starts the server and opens your browser.
 
-- [pdf-lib](https://pdf-lib.js.org/) — memuat, menggabungkan, dan mengubah ukuran/margin halaman.
-- [pdf.js](https://mozilla.github.io/pdf.js/) — merender pratinjau ke canvas.
-- Keduanya dimuat dari CDN (cdnjs), jadi butuh koneksi internet saat pertama dibuka.
+## Tech stack
 
-## Batasan
+- [pdf-lib](https://pdf-lib.js.org/) — loads, merges, and resizes/reflows pages.
+- [pdf.js](https://mozilla.github.io/pdf.js/) — renders the preview to canvas.
+- Both are loaded from a CDN (cdnjs), so an internet connection is required on first load.
 
-- PDF terenkripsi / berkata sandi tidak didukung (ditolak dengan pesan).
-- Anotasi, isian formulir, dan tautan tidak dipertahankan pada hasil gabungan (hanya tampilan halaman yang dicetak).
-- Cetak langsung memakai dialog cetak browser; jumlah dialog berulang pada mode per-file bergantung pada izin browser.
-- Untuk pratinjau yang lebih ringan pada dokumen besar, gunakan zoom lebih kecil.
+## Limitations
+
+- Encrypted / password-protected PDFs are not supported (rejected with a message).
+- Annotations, form fields, and hyperlinks are not preserved in the merged output (only the page appearance is printed).
+- Direct printing uses the browser's print dialog; the number of consecutive dialogs in per-file mode depends on your browser's permissions.
+- For lighter previews on large documents, use a smaller zoom level.
+
+## License
+
+No license specified.
