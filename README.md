@@ -12,6 +12,20 @@ A static web app for printing PDFs — one file at a time or many in bulk. Every
 
 **Live demo:** https://j0yfullness.github.io/pdf-printer/
 
+## Screenshots
+
+**Merge mode (light theme)**
+
+![Merge mode preview](screenshots/preview-merge.png)
+
+**Per-file mode**
+
+![Per-file mode preview](screenshots/preview-per-file.png)
+
+**Dark theme**
+
+![Dark theme preview](screenshots/preview-dark.png)
+
 ## Features
 
 - Add multiple PDFs via drag & drop or the file picker.
